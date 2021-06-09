@@ -20,6 +20,23 @@ Route::group(
         ]),
     ],
     function() {
-        Route::match('GET', '/{any}', 'App\Http\Controllers\Root\IndexController@index')->where('any', '.*');
+        Route::get('/', 'App\Http\Controllers\Root\IndexController@index');
+        // Route::match('POST', '/api/test', 'App\Http\Controllers\Api\TestController');
+        Route::get('/api/test', 'App\Http\Controllers\Api\TestController@index');
+        Route::post('/api/test', 'App\Http\Controllers\Api\TestController@store');
     }
 );
+
+
+// Route::group(
+//     [
+//         'prefix' => 'api',
+//         'middleware' => array_merge([
+//             App\Http\Middleware\VerifyCsrfToken::class
+//         ]),
+//     ],
+//     function() {
+//         Route::get('/test', 'App\Http\Controllers\Api\TestController@show');
+//         Route::post('/test', 'App\Http\Controllers\Api\TestController@store');
+//     }
+// );
